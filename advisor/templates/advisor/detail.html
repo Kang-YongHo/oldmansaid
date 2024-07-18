@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ item.name }}</title>
+</head>
+<body>
+    <h1>{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+    <p>{{ item.created_at }}</p>
+    <a href="{% url 'update' item.id %}">Edit</a>
+    <form action="{% url 'delete' item.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <a href="{% url 'index' %}">Back to list</a>
+</body>
+</html>

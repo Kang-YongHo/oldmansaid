@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyModel List</title>
+</head>
+<body>
+    <h1>MyModel List</h1>
+    <a href="{% url 'create' %}">Create new item</a>
+    <ul>
+        {% for item in items %}
+            <li>
+                <a href="{% url 'read' item.id %}">{{ item.name }}</a>
+                <a href="{% url 'update' item.id %}">Edit</a>
+                <form action="{% url 'delete' item.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
